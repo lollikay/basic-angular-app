@@ -1,1 +1,40 @@
-{{ users() | json }}
+<main>
+  <h1>Users</h1>
+  <section>
+    <form (ngSubmit)="searchUsers()">
+      <label for="search">Search</label>
+      <input 
+        type="text" 
+        id="search" 
+        name="search" 
+        [(ngModel)]="searchTerm" 
+        placeholder="Search users..."
+      >
+      <button type="submit">Search</button>
+    </form>
+  </section>
+  <section>
+    <table>
+      <thead>
+        <tr>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Email</th>
+          <th>Currency</th>
+          <th>Ballance</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for(user of users(); track user.id) { 
+          <tr>
+            <td>{{ user.firstName }}</td>
+            <td>{{ user.lastName }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.bank.currency }}</td>
+            <td>{{ user.address.postalCode }}</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </section>
+</main>

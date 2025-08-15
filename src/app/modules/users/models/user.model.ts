@@ -6,6 +6,7 @@ export interface User {
   birthdate: Date;
   address: {
     country: string;
+    postalCode: string;
   }
   bank: {
     currency: string;
